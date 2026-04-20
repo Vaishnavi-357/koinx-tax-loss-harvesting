@@ -174,7 +174,7 @@ No other files need to change.
 
 ## 🚢 Deployment
 
-### Vercel (recommended)
+### Vercel
 ```bash
 npm i -g vercel
 vercel
@@ -187,8 +187,3 @@ npm run build
 # Or: netlify deploy --prod --dir=dist
 ```
 
----
-
-## 📄 License
-
-MIT — free to use for learning and assignment submission.
