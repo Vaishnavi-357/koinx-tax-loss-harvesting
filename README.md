@@ -54,12 +54,6 @@ src/
 
 ## Working
 
-### What is Tax Loss Harvesting?
-
-Tax Loss Harvesting is a strategy where you **sell underperforming crypto assets** (currently at a loss) to generate a **realized capital loss**. That realized loss then **offsets your existing capital gains**, reducing your total taxable income.
-
-```
-Tax Bill = (Capital Gains - Capital Losses) × Tax Rate
 ```
 
 ### The Tool in 3 Steps
