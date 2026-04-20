@@ -1,12 +1,7 @@
 # KoinX — Tax Loss Harvesting Tool
 
-A production-grade React frontend for the [KoinX Frontend Assignment](https://koinx.notion.site/KoinX-Tax-Loss-Harvesting-Assignment-1eeda378a243800b96fcd67178aa77dd).
 
-> **Live Demo:** [Deploy to Vercel/Netlify after cloning]
-
----
-
-## 🚀 Getting Started
+## SetUp
 
 ```bash
 # 1. Clone the repo
@@ -57,7 +52,7 @@ src/
 
 ---
 
-## 🧠 How It Works — Feature Explanation
+## Working
 
 ### What is Tax Loss Harvesting?
 
@@ -84,66 +79,9 @@ Short-term losses first offset short-term gains (higher tax rate = bigger saving
 
 ---
 
-## 🏗️ Architecture Decisions
-
-### 1. Separation of Concerns
-
-| Layer | File | Responsibility |
-|-------|------|---------------|
-| **Data** | `data/holdings.js` | Static mock data (replace with API call) |
-| **Logic** | `utils/taxCalculations.js` | Pure functions, easily unit-tested |
-| **State** | `hooks/useHarvesting.js` | All React state in one place |
-| **UI** | `components/*.jsx` | Presentational, receive props only |
-| **Composition** | `App.jsx` | Wires everything together |
-
-### 2. Custom Hook Pattern
-
-`useHarvesting` encapsulates all stateful logic. This means:
-- Components are thin and easy to read
-- Logic can be tested without rendering
-- Swapping mock data for a real API only changes the hook
-
-### 3. Derived State with `useMemo`
-
-Rather than storing computed values in state (which can get out of sync), we derive them from the source of truth:
-
-```js
-// Source of truth
-const [selectedIds, setSelectedIds] = useState(new Set())
-
-// Derived — always in sync
-const selectedAssets = useMemo(() =>
-  holdingsData.filter(a => selectedIds.has(a.id)),
-  [selectedIds]
-)
-```
-
-### 4. Pure Utility Functions
-
-All tax math lives in `taxCalculations.js` as pure functions:
-
-```js
-// Input: pre-harvest gains + selected assets
-// Output: { shortTerm, longTerm, total, savings }
-export function calculatePostHarvestGains(preGains, selectedAssets) { ... }
-```
-
-Pure functions have no side effects and are trivially testable.
-
 ---
 
-## 🎨 Tech Stack
-
-| Tool | Purpose |
-|------|---------|
-| **React 18** | UI framework |
-| **Vite** | Build tool (fast HMR, optimised builds) |
-| **Tailwind CSS 3** | Utility-first styling |
-| **DM Sans** | Typography (Google Fonts) |
-
----
-
-## 🔌 Connecting to a Real API
+## Real API
 
 Currently the app uses static mock data. To connect a real API:
 
@@ -168,8 +106,6 @@ useEffect(() => {
 }, [])
 ```
 
-No other files need to change.
-
 ---
 
 ## 🚢 Deployment
@@ -180,10 +116,4 @@ npm i -g vercel
 vercel
 ```
 
-### Netlify
-```bash
-npm run build
-# Drag /dist folder to Netlify dashboard
-# Or: netlify deploy --prod --dir=dist
-```
 
